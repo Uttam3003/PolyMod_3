@@ -1,68 +1,60 @@
 pragma circom 2.0.0;
 
-template Circuit () {
+/This circuit template checks that c is the multiplication of a and b./  
 
-    // Signal input a
+template GivenCircuit () {  
 
-    signal input a;
+   // Signal Inputs
+   signal input a;
+   signal input b;
 
-    // Signal input b
+   // Signal from gates
+   signal X;
+   signal Y;
 
-    signal input b;
+   // Final Signal output
+   signal output Q;
 
-    // Signal from gate x
-    signal x;
+   // Component gates used to create custom curcuit
+   component andGate = AND();
+   component notGate = NOT();
+   component orGate = OR();
 
-    // Signal from gate y
+   // Circuit Logic
+   andGate.a <== a;
+   andGate.b <== b;
+   X <== andGate.out;
 
-    signal y;
+   notGate.in <== b;
+   Y <== notGate.out;
 
-    //signal output
-    signal output q;
+   orGate.a <== X;
+   orGate.b <== Y;
+   Q <== orGate.out;
 
-    // function for gates
-    component andGate = AND();
-    component notGate = NOT();
-    component orGate = OR();
-
-    //logic
-    andGate.a <== a;
-    andGate.b <== b;
-    x <== andGate.out;
-
-    notGate.in <== b;
-    y <== notGate.out;
-
-    orGate.c <== x;
-    orGate.d <== y;
-    q <== orGate.out;
 }
 
 template AND() {
-
-    signal input x;
-    signal input y;
+    signal input a;
+    signal input b;
     signal output out;
 
-    // AND gate
-    out <== x * y;
+    out <== a*b;
 }
 
 template NOT() {
     signal input in;
     signal output out;
 
-    // NOT gate 
-    out <== 1 + in - 2 * in;
+    out <== 1 + in - 2*in;
 }
 
 template OR() {
-    signal input x;
-    signal input y;
+    signal input a;
+    signal input b;
     signal output out;
 
-    // OR gate 
-    out <== x + y - x * y;
+    out <== a + b - a*b;
 }
 
-component main = Circuit();
+component main = GivenCircuit();
