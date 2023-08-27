@@ -22,14 +22,13 @@ const config: HardhatUserConfig = {
       }
     ]
   },
-  networks:{
+  networks: {
     mumbai: {
-      url: `https://rpc.ankr.com/polygon_mumbai`,
-      accounts: [process.env.MUMBAIPRIVATEKEY]
+      url: `https://rpc-mumbai.maticvigil.com/`,
+      accounts: ['5267458dc7384fbd1d4bc0a9a63bfc06527188e6d845ca0e63e83f8ff75db550']
     }
   },
-  
-
+   
   circom: {
     
     inputBasePath: "./circuits",
