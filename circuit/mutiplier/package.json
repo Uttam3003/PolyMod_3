@@ -1,0 +1,12 @@
+{
+  "name": "circum",
+  "version": "1.0.0",
+  "description": "-Designing  a new zkSNARK circuit that implements some logical operations. We need to implement the circuit and deploy a verifier on-chain to verify proofs generated from this circuit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
